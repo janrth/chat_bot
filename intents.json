@@ -1,0 +1,45 @@
+{"intents": [
+        {"tag": "greeting",
+         "patterns": ["Hi","Hello", "How are you", "Is anyone there?", "Hello", "Good day"],
+         "responses": ["Hello", "Hi", "Hi there, how can I help?", "Hi, what can I do for you?"],
+         "context_set": ""
+        },
+        {"tag": "goodbye",
+         "patterns": ["Bye", "See you later", "Goodbye", "Ciao"],
+         "responses": ["See you later, thanks for visiting", "Have a nice day", "Bye! Come back again soon."]
+        },
+        {"tag": "thanks",
+         "patterns": ["Thanks", "Thank you", "That's helpful"],
+         "responses": ["Happy to help!", "Any time!", "My pleasure"]
+        },
+        {"tag": "payments",
+         "patterns": ["Do you take credit cards?", "Do you accept Mastercard?", "Are you cash only?",
+                      "Do you take Debit card?", "Can I pay with Paypal?"],
+         "responses": ["We accept VISA, Mastercard, AMEX and also Paypal."]
+        },
+        {"tag": "covid",
+         "patterns": ["Do we need to wear a mask?", "What are your current Covid rules?", "What are your corona restrictions?", "Are all your guest vaccinated"],
+         "responses": ["We follow the country-wide Covid rules. You don't need to wear a face mask at the moment, but this might change during winter times."]
+        },
+       {"tag": "check-in",
+         "patterns": ["When is check-in?", "At what time are the rooms ready?", "When can we arrive?", "Is an early check-in possible?"],
+         "responses": ["Check-in is possible from 12am on. You can arrive earlier and leave your luggage at the front desk."]
+      },
+      {"tag": "check-out",
+         "patterns": ["When is check-out?", "At what time do we need to leave?", "Is a late check-out possible?"],
+         "responses": ["Check-out is at 10am latest. If you are interested in late check-out, please type 'late check-out' next."]
+      },
+        {"tag": "late check-out",
+         "patterns": ["Late check-out"],
+         "responses": ["Late check-out is an option, but only if the room is not booked for the current day. We charge 10 Dollar for every additional hour."]
+      },
+      {"tag": "breakfast",
+         "patterns": ["What types of breakfast di you offer?", "What is for breakfast?", "Do you have vegan options for breakfast?", "Are there any vegetarian options for breakfast?", "Do you have fresh fruits for breakfast?"],
+         "responses": ["We offer a continental breakfast with multiple vegetarian and vegan options. Additionally we serve fresh fruits and juices every morning."]
+      },
+      {"tag": "parking",
+         "patterns": ["Where can we park our car?", "Do you have a parking lot?", "Where do I park my car?","Do you charge for parking?", "Is parking free?"],
+         "responses": ["We have a big parking lot with enough space and as our guest you can park for free, of course."]
+      }
+   ]
+}
