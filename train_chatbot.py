@@ -32,7 +32,7 @@ with open(json_file_path, 'r') as j:
 
 
 # Training begins here
-# Create empty lists to save tags and full sentences + define signs to be ignored 
+# Create empty lists to save tags and full sentences 
 # for stemming and tokenization:
 tags = []
 sentences = []
@@ -68,7 +68,7 @@ input_size = len(X_train[0])
 hidden_size = 8
 output_size = len(tags)
 
-# Create dataset to be consumed by the model + instantiate the NeuralNetwork:
+# Create dataset to be consumed by the model + instantiate the Neural Network:
 dataset = data_set.ChatDataset(X_train, y_train)
 model = linear_nn.NeuralNet(input_size, hidden_size, output_size).to(device)
 

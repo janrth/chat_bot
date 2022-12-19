@@ -3,11 +3,13 @@ import json
 import pickle
 import torch
 
-from linear_nn import NeuralNet
 from sklearn.feature_extraction.text import CountVectorizer
 import nltk
 from nltk.stem.porter import PorterStemmer
 from nltk.tokenize.treebank import TreebankWordDetokenizer
+
+# import custome module:
+from linear_nn import NeuralNet
 #############################
 
 # activate stemmer and device for pytroch:
@@ -21,9 +23,6 @@ with open(json_file_path, 'r') as j:
 
 FILE = "data.pth"
 data = torch.load(FILE)
-
-# define words to ignore when tokenize and stemming:
-ignore_words = ['?', '.', '!', ',']
 
 # Find input size, size of hidden layers and output size + tags:
 input_size = data["input_size"]
@@ -51,20 +50,20 @@ while True:
         break
     # stem + tokenize for input, before detokenization
     sentence = TreebankWordDetokenizer().detokenize([stemmer.stem(word) for word in 
-                                                nltk.word_tokenize(sentence) if word not in ignore_words])
+                                                nltk.word_tokenize(sentence)])
     sentence = [sentence] # input sentence needs to be a list for vectorization
     X = vectorization_encoder.transform(sentence) # apply pre-fitted vectorization
     X = torch.from_numpy(X.toarray()).to(device) # from numpy to torch 
 
     output = model(X.float()) # make predict
-    _, predicted = torch.max(output, dim=1) # return prediction with highest cross-entropy
+    _, predicted = torch.max(output, dim=1) # return prediction with highest probability
 
     tag = tags[predicted.item()] # find correct tag
 
-    probs = torch.softmax(output, dim=1) # find cross-entropy from softmax layer
+    probs = torch.softmax(output, dim=1) # find probability from softmax layer
     prob = probs[0][predicted.item()]  
     
-    # If cross-entropy prob is big enough (so the bot is confident enough), then return an answer,
+    # If probability is big enough (so the bot is confident enough), then return an answer,
     # otherwise reply to repeat the question:
     if prob.item() > 0.6:
         for intent in contents['intents']:
